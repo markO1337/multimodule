@@ -3,9 +3,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {TestLayoutComponent} from './layouts/test-layout.component';
 
+
 const routes: Routes = [
   { path: 'login',  component: LoginComponent },
-  { path: 'test',  component: TestLayoutComponent }
+  { path: '',  component: TestLayoutComponent,
+    children: [
+      {path: 'test', loadChildren: './menu/menu.module#MenuModule'}
+    ]
+  }
 ];
 
 @NgModule({
